@@ -1,0 +1,4 @@
+{
+    "python.languageServer": "None",
+    "python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/bin/python"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "projtempl",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/cdiddy77/projtempl.git",
+  "author": "Charles Parker <charles@parkerfolk.net>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "py2ts:dtos": "cd backend && poetry run python scripts/pydantic2ts.py --module ./models/dtos.py --output ../packages/web/src/lib/models/dtos.ts --json2ts-cmd ../node_modules/.bin/json2ts",
+    "py2ts:domain": "cd backend && poetry run python scripts/pydantic2ts.py --module ./models/domain.py --output ../packages/web/src/lib/models/domain.ts --json2ts-cmd ../node_modules/.bin/json2ts",
+    "run:backend": "cd backend && poetry run uvicorn server:app --reload --host 0.0.0.0 --port 7892",
+    "run:frontend": "yarn workspace web dev",
+    "run:backend-https": "cd backend && poetry run uvicorn server:app --reload --host 0.0.0.0 --port 7892 --ssl-keyfile ../../shared_vol/certs/privkey.pem --ssl-certfile ../../shared_vol/certs/fullchain.pem",
+    "run:all": "yarn run:backend & yarn run:frontend",
+    "typecheck": "pyright backend -w & yarn workspace web tsc -w"
+  },
+  "devDependencies": {
+    "json-schema-to-typescript": "^15.0.3",
+    "pyright": "^1.1.391"
+  },
+  "dependencies": {}
+}

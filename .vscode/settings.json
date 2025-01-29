@@ -1,4 +1,5 @@
 {
     "python.languageServer": "None",
-    "python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/bin/python"
+    "python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/bin/python",
+    "python.terminal.activateEnvInCurrentTerminal": true
 }
